@@ -54,6 +54,16 @@ def redirect_url(short_code):
 def index():
     return render_template('index.html')
 
+# Função para obter o IP real, considerando proxies
+@app.before_request
+def get_real_ip():
+    if request.headers.get('X-Forwarded-For'):
+        ip = request.headers.get('X-Forwarded-For').split(',')[0]
+    else:
+        ip = request.remote_addr
+    print(f"IP Real: {ip}")
+    # Você pode utilizar o IP aqui para fazer geolocalização ou outras verificações
+
 if __name__ == "__main__":
     # Usa a porta configurada pelo Render ou a porta 5000 como fallback
     port = int(os.environ.get("PORT", 5000))
