@@ -2,6 +2,7 @@ from flask import Flask, request, redirect, render_template
 import sqlite3
 import random
 import string
+import os
 
 app = Flask(__name__)
 
@@ -12,7 +13,8 @@ def generate_short_code(length=6):
 
 # Conexão com o banco de dados
 def get_db_connection():
-    conn = sqlite3.connect('database.db')
+    db_path = os.path.join(os.getcwd(), 'database.db')  # Caminho absoluto do banco de dados
+    conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -53,4 +55,6 @@ def index():
     return render_template('index.html')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Usa a porta configurada pelo Render ou a porta 5000 como fallback
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
