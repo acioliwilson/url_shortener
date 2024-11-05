@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encurtador de Links</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <div class="bg-white p-8 rounded-lg shadow-md w-96">
+        <h1 class="text-2xl font-bold text-center mb-4">Encurtador e Mascarador de Links</h1>
+        <form action="/shorten" method="post">
+            <div class="mb-4">
+                <label for="url" class="block text-sm font-medium text-gray-700">URL:</label>
+                <input type="text" id="url" name="url" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md" placeholder="Insira a URL">
+            </div>
+            <div class="mb-4">
+                <label for="alias" class="block text-sm font-medium text-gray-700">Alias (opcional):</label>
+                <input type="text" id="alias" name="alias" placeholder="Digite um alias personalizado" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+            </div>
+            <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 rounded-md">Encurtar e Mascarar</button>
+        </form>
+    </div>
+
+</body>
+</html>
